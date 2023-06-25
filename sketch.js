@@ -8,7 +8,7 @@ function preload() {
     p1Img = loadImage("p1.png")
     pbImg = loadImage("pb.png")
     hitSound = loadSound("hitSound.wav")
-    laserBullet = loadSound("laserBullet.wav")
+    laserBullet = loadSound("laserbullet.wav")
     bgSound = loadSound("bgSound.mp3")
     gameOverImg = loadImage("Game Over.png")
 }
@@ -18,7 +18,7 @@ function setup() {
     createCanvas(600, 600)
     bg = createSprite(300, 300);
     bg.addImage(bgImg)
-    bg.scale = 1.75
+    bg.scale = 2.25
     bgSound.loop()
     score = 0
     health = 3
@@ -33,6 +33,7 @@ function setup() {
     enemyGroup = new Group()
 
     edges = createEdgeSprites()
+    bg.velocityY = -2
 
 }
 
@@ -42,7 +43,10 @@ function draw() {
     textSize(24)
     fill("yellow")
     text("score =" + score, 50, height - 20)
-    text("Press space to shoot", width / 2 - 100, 50),10
+    text("Press space to shoot", width / 2 - 100, 50)
+    if(bg.y<150){
+        bg.y=300
+    }
     
   
     
